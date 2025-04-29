@@ -4,8 +4,8 @@ pipeline {
         AWS_ACCOUNT_ID="212178105583"
         AWS_DEFAULT_REGION="us-east-1"
         IMAGE_REPO_NAME="jenkins-docker-image-ecr"
-        IMAGE_TAG="v1"
-        REPOSITORY_URI = "212178105583.dkr.ecr.us-east-1.amazonaws.com/jenkins-ecr-repo"
+        IMAGE_TAG="Latest"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
 
      stages {
@@ -21,7 +21,7 @@ pipeline {
 
          stage('Cloning Git') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])     
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'AKIATCZWM6TX72NHUHAU', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])
             }
         }
 
