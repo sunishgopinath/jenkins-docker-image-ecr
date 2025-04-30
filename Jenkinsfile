@@ -1,4 +1,4 @@
-And change AWS_ACCOUNT_ID, AWS_DEFAULT_REGION_IMAGE_REPO_NAME
+
 pipeline {
  agent any
  environment {
