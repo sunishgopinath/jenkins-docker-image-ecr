@@ -24,7 +24,7 @@ pipeline {
 
         stage('Cloning Git') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'AKIATCZWM6TX72NHUHAU', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'AKIATCZWM6TX72NHUHAU', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])
             }
         }
 
