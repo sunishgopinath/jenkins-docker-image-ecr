@@ -7,7 +7,7 @@ pipeline {
  IMAGE_REPO_NAME="jenkins-docker-image-ecr"
  IMAGE_TAG="latest"
  REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
- echo ${REPOSITORY_URI}
+ 
  }
  
  stages {
@@ -15,6 +15,7 @@ pipeline {
  stage('Logging into AWS ECR') {
  steps {
  script {
+    echo ${REPOSITORY_URI}
  sh "aws ecr get-login-password - region ${AWS_DEFAULT_REGION} | docker login - username AWS - password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
  //sh aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 212178105583.dkr.ecr.us-east-1.amazonaws.com
  }
