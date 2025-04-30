@@ -14,8 +14,8 @@ pipeline {
          stage('Logging into AWS ECR') {
             steps {
                 script {
-               sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-              // aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 212178105583.dkr.ecr.us-east-1.amazonaws.com
+              // sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+              aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 212178105583.dkr.ecr.us-east-1.amazonaws.com
                
                 }
                  
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Cloning Git') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'AKIATCZWM6TX72NHUHAU', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'AKIATCZWM6TX72NHUHAU', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]])
             }
         }
 
