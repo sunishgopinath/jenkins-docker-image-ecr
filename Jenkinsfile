@@ -7,6 +7,7 @@ pipeline {
  IMAGE_REPO_NAME="jenkins-docker-image-ecr"
  IMAGE_TAG="latest"
  REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+ echo ${REPOSITORY_URI}
  }
  
  stages {
