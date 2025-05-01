@@ -34,8 +34,8 @@ pipeline {
  steps{
  script {
     //dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}" 
-    docker build -t jenkins-ecr-repo .
-   //dockerimage = docker build -t "${IMAGE_REPO_NAME}:${IMAGE_TAG}" .
+    
+   dockerimage = docker.build -t "${IMAGE_REPO_NAME}:${IMAGE_TAG}" .
  }
  }
  }
