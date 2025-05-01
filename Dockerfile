@@ -1,1 +1,2 @@
-RUN echo dockerImage
+FROM  dockerImage:latest
+# Set the working directory
