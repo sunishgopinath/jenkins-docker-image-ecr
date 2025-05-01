@@ -25,7 +25,7 @@ pipeline {
  
  stage('Cloning Git') {
  steps {
-checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]]) 
+ checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/sunishgopinath/jenkins-docker-image-ecr.git']]]) 
  }
  }
  
@@ -33,8 +33,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleCon
  stage('Building image') {
  steps{
  script {
-    //dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}" 
-    docker build -t jenkins-ecr-repo .
+    dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}" 
    //dockerimage = docker build -t "${IMAGE_REPO_NAME}:${IMAGE_TAG}" .
  }
  }
