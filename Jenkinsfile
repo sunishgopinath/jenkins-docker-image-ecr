@@ -35,7 +35,7 @@ pipeline {
  script {
     //dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}" 
     
-   dockerimage = docker.build -t "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+   docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
  }
  }
  }
